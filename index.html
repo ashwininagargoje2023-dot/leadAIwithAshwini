@@ -83,6 +83,26 @@ nav { position: sticky; top: 0; z-index: 100; height: 64px; background: rgba(250
 .p-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 .p-tag { font-size: 10px; font-weight: 500; padding: 3px 8px; border-radius: 3px; background: var(--forest-pale); color: var(--forest-tag); }
 
+/* ABOUT HOME */
+.about-home { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.about-home-inner { max-width: 1100px; margin: 0 auto; padding: 88px 60px; display: grid; grid-template-columns: 420px 1fr; gap: 80px; align-items: center; }
+.about-photo-wrap { position: relative; flex-shrink: 0; }
+.about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; border-radius: 8px; display: block; filter: grayscale(8%) contrast(1.02); }
+.about-photo-badge { position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(28,58,42,.92); backdrop-filter: blur(8px); color: var(--cream-light); font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 12px 16px; border-radius: 5px; display: flex; align-items: center; gap: 8px; }
+.badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.about-p { font-size: 14px; line-height: 1.82; color: var(--ink-mid); font-weight: 300; margin-bottom: 14px; }
+.about-p strong { color: var(--ink); font-weight: 500; }
+.about-home-values { display: flex; flex-direction: column; gap: 0; margin: 20px 0 28px; }
+.av-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--ink-mid); font-weight: 300; line-height: 1.6; }
+.av-item:first-child { border-top: 1px solid var(--border); }
+.av-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+.av-item strong { color: var(--ink); font-weight: 500; }
+.about-home-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-forest-sm { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .03em; padding: 10px 22px; border-radius: 4px; background: var(--forest); color: var(--cream); text-decoration: none; transition: background .15s; }
+.btn-forest-sm:hover { background: var(--forest-mid); }
+.btn-outline-sm { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .03em; padding: 10px 22px; border-radius: 4px; background: transparent; color: var(--forest); border: 1px solid var(--border); text-decoration: none; transition: background .15s; }
+.btn-outline-sm:hover { background: var(--forest-pale); }
+
 /* SERVICES */
 .services { border-bottom: 1px solid var(--border); }
 .services-header { max-width: 1100px; margin: 0 auto; padding: 80px 60px 52px; }
@@ -136,6 +156,8 @@ footer nav a:hover { color: rgba(245,240,232,.6); }
   .pillars-header { grid-template-columns: 1fr; padding: 56px 20px 40px; gap: 20px; }
   .pillars-grid { grid-template-columns: 1fr; }
   .pillar { border-right: none; border-bottom: 1px solid var(--border); }
+  .about-home-inner { grid-template-columns: 1fr; padding: 56px 20px; gap: 36px; }
+  .about-photo { aspect-ratio: 4/3; object-position: center 20%; }
   .services-header { padding: 56px 20px 40px; }
   .services-grid { grid-template-columns: 1fr; }
   .cta { padding: 60px 20px; }
@@ -256,6 +278,34 @@ footer nav a:hover { color: rgba(245,240,232,.6); }
         <span class="p-tag">Assessment</span>
         <span class="p-tag">Risk</span>
         <span class="p-tag">Roadmap</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT SECTION WITH PHOTO -->
+<div class="about-home">
+  <div class="about-home-inner">
+    <div class="about-photo-wrap">
+      <img src="ash.jpg" alt="Ashwini Nagargoje — AI & Tech Leadership Coach" class="about-photo"/>
+      <div class="about-photo-badge">
+        <span class="badge-dot"></span>
+        AI & Tech Leadership
+      </div>
+    </div>
+    <div class="about-home-content">
+      <div class="eyebrow">About Ashwini</div>
+      <h2 class="section-h">The AI translator<br>for <em>business leaders</em></h2>
+      <p class="about-p">Most AI content is written by engineers for engineers. I take what the technical world knows and make it <strong>actionable for the people making the decisions</strong> — VPs, CTOs, PMs, and founders.</p>
+      <p class="about-p">From how a transformer processes a token to whether your board should approve an AI vendor's contract — I give leaders the depth to ask the right questions and spot the wrong answers. <strong>No PhD required. No jargon. Just what you need.</strong></p>
+      <div class="about-home-values">
+        <div class="av-item"><span class="av-dot"></span><div><strong>Depth over surface</strong> — real technical understanding, not buzzwords</div></div>
+        <div class="av-item"><span class="av-dot"></span><div><strong>Leaders deserve the truth</strong> — AI vendors oversell, I don't</div></div>
+        <div class="av-item"><span class="av-dot"></span><div><strong>Governance is not optional</strong> — where the real investment decisions live</div></div>
+      </div>
+      <div class="about-home-actions">
+        <a href="about.html" class="btn-forest-sm">My full story →</a>
+        <a href="https://calendar.app.google/TttooqHbrYLUx9rPA" target="_blank" class="btn-outline-sm">Book a free call →</a>
       </div>
     </div>
   </div>
