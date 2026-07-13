@@ -6,9 +6,9 @@ Personal website for Ashwini Nagargoje — AI & Tech Leadership Coach, Advisor, 
 
 | File | Page |
 |------|------|
-| `index.html` | Home |
-| `about.html` | About |
+| `index.html` | Home (includes About) |
 | `services.html` | Services |
+| `resources.html` | Resources (digital books & free guides) |
 
 ## How to deploy on GitHub Pages
 
