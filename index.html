@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>leadAIwithAshwini — AI & Tech Leadership</title>
+<meta name="description" content="I decode how AI works, prove it delivers, and show leaders exactly where to invest — in plain English. No PhD required.">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream:       #F1EDE4;
+  --cream-light: #F8F5EE;
+  --cream-dark:  #E8E2D3;
+  --forest:      #1C3A2A;
+  --forest-mid:  #2A5040;
+  --forest-pale: #E8F0EB;
+  --forest-tag:  #3D6B55;
+  --gold:        #A9714F;
+  --ink:         #161412;
+  --ink-mid:     #5C594F;
+  --ink-soft:    #8F8B82;
+  --border:      rgba(28,58,42,.7);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream-light); color: var(--ink); -webkit-font-smoothing: antialiased; font-size: 15px; line-height: 1.6; }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 100; height: 64px; background: rgba(250,247,242,.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 60px; }
+.logo { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 800; letter-spacing: -.01em; color: var(--forest); text-decoration: none; }
+.logo span { color: var(--gold); }
+.nav-menu { display: flex; gap: 36px; list-style: none; }
+.nav-menu a { font-size: 13px; font-weight: 400; color: var(--ink-mid); text-decoration: none; transition: color .15s; }
+.nav-menu a:hover { color: var(--forest); }
+.nav-btn { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .02em; padding: 9px 22px; border-radius: 4px; background: var(--forest); color: var(--cream); text-decoration: none; transition: background .15s; }
+.nav-btn:hover { background: var(--forest-mid); }
+
+/* HERO */
+.hero { background: var(--forest); padding: 104px 60px 112px; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; top: -100px; right: -100px; width: 480px; height: 480px; border-radius: 50%; background: rgba(184,137,58,.05); pointer-events: none; }
+.hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: center; position: relative; }
+.kicker { font-size: 10px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+.kicker::before { content: ''; width: 18px; height: 1px; background: var(--gold); }
+.hero h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(40px, 5vw, 64px); font-weight: 800; line-height: 1.06; letter-spacing: -.02em; color: var(--cream-light); margin-bottom: 22px; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-desc { font-size: 16px; line-height: 1.72; color: rgba(245,240,232,.45); font-weight: 300; max-width: 420px; margin-bottom: 40px; }
+.hero-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.btn-gold { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .02em; padding: 12px 26px; border-radius: 4px; background: var(--gold); color: var(--forest); text-decoration: none; transition: opacity .15s; }
+.btn-gold:hover { opacity: .86; }
+.btn-ghost { font-size: 13px; font-weight: 400; color: rgba(245,240,232,.38); text-decoration: none; transition: color .15s; }
+.btn-ghost:hover { color: rgba(245,240,232,.7); }
+
+.hero-stats { display: flex; flex-direction: column; gap: 1px; border: 1px solid rgba(255,255,255,.07); border-radius: 6px; overflow: hidden; }
+.hstat { background: rgba(255,255,255,.05); padding: 24px 26px; border-bottom: 1px solid rgba(255,255,255,.06); }
+.hstat:last-child { border-bottom: none; background: rgba(184,137,58,.1); }
+.hs-label { font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: rgba(245,240,232,.28); margin-bottom: 7px; }
+.hstat:last-child .hs-label { color: var(--gold); opacity: .8; }
+.hs-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; color: var(--cream-light); line-height: 1.3; margin-bottom: 3px; }
+.hs-sub { font-size: 12px; color: rgba(245,240,232,.3); font-weight: 300; }
+
+/* TICKER */
+.ticker { background: var(--cream-dark); border-bottom: 1px solid var(--border); padding: 12px 60px; display: flex; align-items: center; gap: 20px; }
+.ticker-label { font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); white-space: nowrap; flex-shrink: 0; }
+.ticker-items { display: flex; flex-wrap: wrap; gap: 7px; }
+.t-item { font-size: 10px; font-weight: 500; padding: 3px 9px; border-radius: 3px; background: var(--forest-pale); color: var(--forest-tag); }
+
+/* PILLARS */
+.pillars { border-bottom: 1px solid var(--border); }
+.pillars-header { max-width: 1100px; margin: 0 auto; padding: 80px 60px 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; }
+.eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--gold); }
+.section-h { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(24px, 3vw, 38px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; color: var(--ink); }
+.section-h em { font-style: normal; color: var(--forest); }
+.section-p { font-size: 14px; line-height: 1.75; color: var(--ink-mid); font-weight: 300; }
+.pillars-grid { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--border); }
+.pillar { padding: 40px 36px 48px; border-right: 1px solid var(--border); transition: background .2s; }
+.pillar:last-child { border-right: none; }
+.pillar:hover { background: var(--cream); }
+.p-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: .1em; margin-bottom: 16px; }
+.p-icon { width: 38px; height: 38px; border-radius: 6px; background: var(--forest-pale); display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 16px; }
+.pillar h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 700; color: var(--forest); margin-bottom: 10px; line-height: 1.2; letter-spacing: -.01em; }
+.pillar p { font-size: 13px; color: var(--ink-mid); line-height: 1.72; font-weight: 300; margin-bottom: 18px; }
+.p-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.p-tag { font-size: 10px; font-weight: 500; padding: 3px 8px; border-radius: 3px; background: var(--forest-pale); color: var(--forest-tag); }
+
+/* ABOUT HOME */
+.about-home { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.about-home-inner { max-width: 1100px; margin: 0 auto; padding: 88px 60px; display: grid; grid-template-columns: 420px 1fr; gap: 80px; align-items: center; }
+.about-photo-wrap { position: relative; flex-shrink: 0; }
+.about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; border-radius: 8px; display: block; filter: grayscale(8%) contrast(1.02); }
+.about-photo-badge { position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(28,58,42,.92); backdrop-filter: blur(8px); color: var(--cream-light); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 12px 16px; border-radius: 5px; display: flex; align-items: center; gap: 8px; }
+.badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.about-p { font-size: 14px; line-height: 1.82; color: var(--ink-mid); font-weight: 300; margin-bottom: 14px; }
+.about-p strong { color: var(--ink); font-weight: 500; }
+.about-home-values { display: flex; flex-direction: column; gap: 0; margin: 20px 0 28px; }
+.av-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--ink-mid); font-weight: 300; line-height: 1.6; }
+.av-item:first-child { border-top: 1px solid var(--border); }
+.av-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+.av-item strong { color: var(--ink); font-weight: 500; }
+.about-home-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-forest-sm { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .03em; padding: 10px 22px; border-radius: 4px; background: var(--forest); color: var(--cream); text-decoration: none; transition: background .15s; }
+.btn-forest-sm:hover { background: var(--forest-mid); }
+.btn-outline-sm { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .03em; padding: 10px 22px; border-radius: 4px; background: transparent; color: var(--forest); border: 1px solid var(--border); text-decoration: none; transition: background .15s; }
+.btn-outline-sm:hover { background: var(--forest-pale); }
+
+/* SERVICES */
+.services { border-bottom: 1px solid var(--border); }
+.services-header { max-width: 1100px; margin: 0 auto; padding: 80px 60px 52px; }
+.services-grid { display: grid; grid-template-columns: repeat(2,1fr); border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+.svc { padding: 40px 40px 44px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--cream-light); transition: background .2s; }
+.svc:hover { background: var(--cream); }
+.svc-num { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.svc-icon { width: 38px; height: 38px; border-radius: 6px; background: var(--forest-pale); display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 16px; }
+.svc h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px; font-weight: 700; color: var(--forest); margin-bottom: 10px; line-height: 1.2; letter-spacing: -.01em; }
+.svc p { font-size: 13px; color: var(--ink-mid); line-height: 1.75; font-weight: 300; margin-bottom: 20px; }
+.svc-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.svc-btn { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 9px 18px; border-radius: 4px; text-decoration: none; transition: opacity .15s; }
+.svc-btn.primary { background: var(--forest); color: var(--cream); }
+.svc-btn.primary:hover { opacity: .85; }
+.svc-btn.secondary { background: transparent; color: var(--forest); border: 1px solid var(--border); }
+.svc-btn.secondary:hover { background: var(--forest-pale); }
+.download-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 500; padding: 3px 9px; border-radius: 3px; background: var(--gold-pale, #EDE1D3); color: var(--gold); margin-bottom: 14px; border: 1px solid rgba(184,137,58,.2); }
+
+/* CTA */
+.cta { background: var(--forest); padding: 88px 60px; text-align: center; position: relative; overflow: hidden; }
+.cta::before { content: ''; position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; border-radius: 50%; background: rgba(184,137,58,.06); pointer-events: none; }
+.cta h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(26px, 3.5vw, 46px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; color: var(--cream-light); margin-bottom: 14px; position: relative; }
+.cta h2 em { font-style: normal; color: var(--gold); }
+.cta p { font-size: 15px; color: rgba(245,240,232,.38); margin-bottom: 34px; font-weight: 300; position: relative; }
+.cta-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; position: relative; }
+.btn-cta { font-family: 'Plus Jakarta Sans', sans-serif; display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--forest); font-size: 13px; font-weight: 700; letter-spacing: .02em; padding: 13px 28px; border-radius: 4px; text-decoration: none; transition: opacity .15s; }
+.btn-cta:hover { opacity: .88; }
+.btn-cta-ghost { font-size: 13px; font-weight: 400; color: rgba(245,240,232,.4); text-decoration: none; transition: color .15s; }
+.btn-cta-ghost:hover { color: rgba(245,240,232,.7); }
+
+/* CONTACT STRIP */
+.contact-strip { background: var(--cream-dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 60px; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.contact-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink-mid); text-decoration: none; transition: color .15s; }
+.contact-item:hover { color: var(--forest); }
+.contact-item span { font-size: 15px; }
+.contact-item strong { font-weight: 500; color: var(--ink); }
+
+/* FOOTER */
+footer { background: var(--ink); padding: 36px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.f-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800; color: var(--cream-light); letter-spacing: -.01em; text-decoration: none; }
+.f-logo span { color: var(--gold); }
+footer nav { display: flex; gap: 24px; }
+footer nav a { font-size: 12px; color: rgba(245,240,232,.28); text-decoration: none; transition: color .15s; }
+footer nav a:hover { color: rgba(245,240,232,.6); }
+.f-copy { font-size: 11px; color: rgba(245,240,232,.18); }
+
+@media(max-width:768px){
+  nav { padding: 0 20px; } .nav-menu { display: none; }
+  .hero { padding: 60px 20px 72px; } .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .ticker { padding: 12px 20px; }
+  .pillars-header { grid-template-columns: 1fr; padding: 56px 20px 40px; gap: 20px; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar { border-right: none; border-bottom: 1px solid var(--border); }
+  .about-home-inner { grid-template-columns: 1fr; padding: 56px 20px; gap: 36px; }
+  .about-photo { aspect-ratio: 4/3; object-position: center 20%; }
+  .services-header { padding: 56px 20px 40px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .cta { padding: 60px 20px; }
+  .contact-strip { padding: 20px; gap: 20px; flex-direction: column; align-items: flex-start; }
+  footer { padding: 28px 20px; flex-direction: column; text-align: center; }
+  footer nav { justify-content: center; flex-wrap: wrap; }
+}
+
+/* MONO LABELS */
+.kicker, .eyebrow, .nav-menu a, .ticker-label, .t-item, .hs-label, .p-num, .svc-num, .mc-num, .v-num, .fmt-num, .cp-num, .cp-status, .slide-tag, .download-badge, .rc-badge, .profile-title, .profile-link, footer nav a, .f-copy {
+  font-family: 'JetBrains Mono', monospace;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">leadAI<span>withAshwini</span></a>
+  <ul class="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="https://www.instagram.com/leadwithashwini/" target="_blank">Instagram</a></li>
+  </ul>
+  <a href="https://calendar.app.google/TttooqHbrYLUx9rPA" target="_blank" class="nav-btn">Book a call →</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="kicker">AI & Tech Leadership</div>
+      <h1>The AI layer<br>every leader<br>needs to <em>own</em></h1>
+      <p class="hero-desc">I decode how AI works, prove it delivers, and show leaders exactly where to invest — in plain English, no PhD required.</p>
+      <div class="hero-actions">
+        <a href="https://calendar.app.google/TttooqHbrYLUx9rPA" target="_blank" class="btn-gold">Book a free call →</a>
+        <a href="services.html" class="btn-ghost">See all services ↓</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hs-label">How it works</div>
+        <div class="hs-val">Transformers · Tokens · Agents · RAG</div>
+        <div class="hs-sub">The real architecture — explained for leaders</div>
+      </div>
+      <div class="hstat">
+        <div class="hs-label">Prove it is working</div>
+        <div class="hs-val">Metrics · Eval · ROI · Acceptance criteria</div>
+        <div class="hs-sub">The numbers that separate value from hype</div>
+      </div>
+      <div class="hstat">
+        <div class="hs-label">Where leaders invest $</div>
+        <div class="hs-val">Governance · Maturity · Guardrails · Assessment</div>
+        <div class="hs-sub">The strategic decisions every leader must make</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <span class="ticker-label">Topics covered</span>
+  <div class="ticker-items">
+    <span class="t-item">Transformers</span>
+    <span class="t-item">RLHF</span>
+    <span class="t-item">RAG & Agentic RAG</span>
+    <span class="t-item">AI Agents</span>
+    <span class="t-item">ReAct Framework</span>
+    <span class="t-item">AI Governance</span>
+    <span class="t-item">Maturity Model</span>
+    <span class="t-item">Guardrails</span>
+    <span class="t-item">AI Eval</span>
+    <span class="t-item">Agent ROI</span>
+    <span class="t-item">Fine-tuning</span>
+    <span class="t-item">Human-in-the-Loop</span>
+  </div>
+</div>
+
+<div class="pillars">
+  <div class="pillars-header">
+    <div>
+      <div class="eyebrow">What I cover</div>
+      <div class="section-h">Three things every<br>AI leader must <em>understand</em></div>
+    </div>
+    <p class="section-p">Built specifically for the leaders making real decisions — not engineers, not developers. New content every Mon · Wed · Fri.</p>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="p-num">01</div>
+      <div class="p-icon">🧠</div>
+      <h3>How it works</h3>
+      <p>The real architecture behind every AI product you use — explained without jargon. Transformers, tokens, agents, fine-tuning — in plain English.</p>
+      <div class="p-tags">
+        <span class="p-tag">Transformers</span>
+        <span class="p-tag">Tokens</span>
+        <span class="p-tag">RLHF</span>
+        <span class="p-tag">Agents</span>
+        <span class="p-tag">RAG</span>
+        <span class="p-tag">Fine-tuning</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="p-num">02</div>
+      <div class="p-icon">📊</div>
+      <h3>Prove it is working</h3>
+      <p>The metrics, evals, and acceptance criteria that separate real AI value from a very expensive demo that never ships to production.</p>
+      <div class="p-tags">
+        <span class="p-tag">Agent ROI</span>
+        <span class="p-tag">AI Eval</span>
+        <span class="p-tag">Metrics</span>
+        <span class="p-tag">LLM-as-Judge</span>
+        <span class="p-tag">Benchmarks</span>
+        <span class="p-tag">RAGAS</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="p-num">03</div>
+      <div class="p-icon">💰</div>
+      <h3>Where leaders invest $</h3>
+      <p>AI Governance, Maturity Models, Guardrails, Risk Assessment — the strategic investment decisions that separate organisations that lead from those that follow.</p>
+      <div class="p-tags">
+        <span class="p-tag">AI Governance</span>
+        <span class="p-tag">Maturity Model</span>
+        <span class="p-tag">Guardrails</span>
+        <span class="p-tag">Assessment</span>
+        <span class="p-tag">Risk</span>
+        <span class="p-tag">Roadmap</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT SECTION WITH PHOTO -->
+<div class="about-home">
+  <div class="about-home-inner">
+    <div class="about-photo-wrap">
+      <img src="ash.jpg" alt="Ashwini Nagargoje — AI & Tech Leadership Coach" class="about-photo"/>
+      <div class="about-photo-badge">
+        <span class="badge-dot"></span>
+        AI & Tech Leadership
+      </div>
+    </div>
+    <div class="about-home-content">
+      <div class="eyebrow">About Ashwini</div>
+      <h2 class="section-h">The AI translator<br>for <em>business leaders</em></h2>
+      <p class="about-p">Most AI content is written by engineers for engineers. I take what the technical world knows and make it <strong>actionable for the people making the decisions</strong> — VPs, CTOs, PMs, and founders.</p>
+      <p class="about-p">From how a transformer processes a token to whether your board should approve an AI vendor's contract — I give leaders the depth to ask the right questions and spot the wrong answers. <strong>No PhD required. No jargon. Just what you need.</strong></p>
+      <p class="about-p">I share new work every Monday, Wednesday, and Friday on Instagram — with coaching, advisory, and digital guides for when you need to go deeper.</p>
+      <div class="about-home-values">
+        <div class="av-item"><span class="av-dot"></span><div><strong>Depth over surface</strong> — real technical understanding, not buzzwords</div></div>
+        <div class="av-item"><span class="av-dot"></span><div><strong>Leaders deserve the truth</strong> — AI vendors oversell, I don't</div></div>
+        <div class="av-item"><span class="av-dot"></span><div><strong>Governance is not optional</strong> — where the real investment decisions live</div></div>
+        <div class="av-item"><span class="av-dot"></span><div><strong>Consistency builds trust</strong> — three posts a week, no gaps, no sponsored takes</div></div>
+      </div>
+      <div class="about-home-actions">
+        <a href="https://www.instagram.com/leadwithashwini/" target="_blank" class="btn-forest-sm">Follow @leadwithashwini →</a>
+        <a href="https://calendar.app.google/TttooqHbrYLUx9rPA" target="_blank" class="btn-outline-sm">Book a free call →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="services">
+  <div class="services-header">
+    <div class="eyebrow">Work with me</div>
+    <div class="section-h">How I help your organisation <em>lead with AI</em></div>
+  </div>
+  <div class="services-grid">
+    <div class="svc">
+      <div class="svc-num">01</div>
+      <div class="svc-icon">🎓</div>
+      <h3>Coaching & Workshops</h3>
+      <p>1:1 coaching for executives and custom AI literacy workshops for leadership teams. From transformer architecture to AI governance — tailored to your organisation's level and goals.</p>
+      <div class="svc-actions">
+        <a href="https://calendar.app.google/TttooqHbrYLUx9rPA" target="_blank" class="svc-btn primary">Book a session →</a>
+        <a href="mailto:ashwininagargoje2023@gmail.com" class="svc-btn secondary">Email me</a>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">02</div>
+      <div class="svc-icon">📥</div>
+      <div class="download-badge">⬇ Digital guides & books</div>
+      <h3>Resources & Digital Books</h3>
+      <p>Practical frameworks, checklists, and digital books built for leaders — AI Maturity Assessment, Vendor Evaluation Checklist, Agent ROI Calculator, Governance Starter Kit and more.</p>
+      <div class="svc-actions">
+        <a href="resources.html" class="svc-btn primary">Browse resources →</a>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">03</div>
+      <div class="svc-icon">🎯</div>
+      <h3>AI Strategy & Governance Advisory</h3>
+      <p>Fractional AI advisor for organisations evaluating AI investments, building governance frameworks, and designing guardrails. Ask the right questions before signing the wrong contracts.</p>
+      <div class="svc-actions">
+        <a href="https://calendar.app.google/TttooqHbrYLUx9rPA" target="_blank" class="svc-btn primary">Start a conversation →</a>
+        <a href="mailto:ashwininagargoje2023@gmail.com" class="svc-btn secondary">Email me</a>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">04</div>
+      <div class="svc-icon">📱</div>
+      <h3>Free Instagram Content</h3>
+      <p>Three posts per week — real AI architecture, strategy, ROI frameworks, and governance — all in plain English, all built for leaders not developers.</p>
+      <div class="svc-actions">
+        <a href="https://www.instagram.com/leadwithashwini/" target="_blank" class="svc-btn primary">Follow @leadwithashwini →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>Stop making AI decisions<br>based on <em>vendor decks</em></h2>
+  <p>Real depth. Plain English. Three times a week — and deeper when you need it.</p>
+  <div class="cta-actions">
+    <a href="https://calendar.app.google/TttooqHbrYLUx9rPA" target="_blank" class="btn-cta">Book a free call →</a>
+    <a href="mailto:ashwininagargoje2023@gmail.com" class="btn-cta-ghost">or email Ashwini ↗</a>
+  </div>
+</div>
+
+<div class="contact-strip">
+  <a href="mailto:ashwininagargoje2023@gmail.com" class="contact-item">
+    <span>✉</span> <strong>ashwininagargoje2023@gmail.com</strong>
+  </a>
+  <a href="https://calendar.app.google/TttooqHbrYLUx9rPA" target="_blank" class="contact-item">
+    <span>📅</span> <strong>Book a free 30-min call</strong>
+  </a>
+  <a href="https://www.instagram.com/leadwithashwini/" target="_blank" class="contact-item">
+    <span>📸</span> <strong>@leadwithashwini</strong>
+  </a>
+</div>
+
+<footer>
+  <a href="index.html" class="f-logo">leadAI<span>withAshwini</span></a>
+  <nav>
+    <a href="mailto:ashwininagargoje2023@gmail.com">✉ Email</a>
+    <a href="https://www.instagram.com/leadwithashwini/" target="_blank">📸 Instagram</a>
+  </nav>
+  <span class="f-copy">© 2025 leadAIwithAshwini.com</span>
+</footer>
+
+</body>
+</html>
